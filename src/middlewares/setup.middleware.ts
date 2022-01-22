@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import compression from 'compression';
 import morgan from 'morgan';
 import path from 'path';
+import fileUpload from 'express-fileupload';
 
 import { initializePassport, passportInit } from '.';
 
@@ -19,4 +20,13 @@ export const setupMiddlewares = (app: Application) => {
   // Passport
   app.use(initializePassport());
   passportInit();
+
+  // Upload file
+  app.use(
+    fileUpload({
+      useTempFiles: true,
+      tempFileDir: '/tmp/',
+      createParentPath: true,
+    })
+  );
 };
