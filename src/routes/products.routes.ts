@@ -2,11 +2,13 @@ import { Router } from 'express';
 import { check } from 'express-validator';
 
 import {
+  cacheMiddleware,
   checkNewName,
   isAdminOrSameUser,
   protectWithJWT,
   validateFields,
 } from '../middlewares';
+import { CACHE_TIME } from '../config';
 import { alreadyRegistered, doesItExist } from '../helpers';
 import {
   createProduct,
@@ -20,7 +22,7 @@ const router: Router = Router();
 
 router
   .route('/')
-  .get(getProducts)
+  .get(cacheMiddleware(CACHE_TIME.ONE_HOUR), getProducts)
   .post(
     [
       protectWithJWT,
@@ -40,6 +42,7 @@ router
   .route('/:id')
   .get(
     [
+      cacheMiddleware(CACHE_TIME.ONE_HOUR),
       check('id', 'It is not a valid Mongo ID').isMongoId(),
       validateFields,
       check('id').custom(id => doesItExist(id, 'product')),

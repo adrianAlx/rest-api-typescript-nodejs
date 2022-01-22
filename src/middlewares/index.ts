@@ -9,3 +9,4 @@ export * from './google-signup.middleware';
 export * from './validate-role.middleware';
 export * from './check-in-collection.middleware';
 export * from './validate-file.middleware';
+export * from './cache.middleware';

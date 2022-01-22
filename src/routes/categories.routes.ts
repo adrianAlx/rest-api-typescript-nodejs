@@ -9,7 +9,9 @@ import {
   updateCategory,
 } from '../controllers';
 import { alreadyRegistered, doesItExist } from '../helpers';
+import { CACHE_TIME } from '../config';
 import {
+  cacheMiddleware,
   checkNewName,
   isAdminOrSameUser,
   protectWithJWT,
@@ -20,7 +22,7 @@ const router: Router = Router();
 
 router
   .route('/')
-  .get(getCategories)
+  .get(cacheMiddleware(CACHE_TIME.ONE_HOUR), getCategories)
   .post(
     [
       protectWithJWT,

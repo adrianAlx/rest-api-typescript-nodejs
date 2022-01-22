@@ -3,16 +3,18 @@ import { check } from 'express-validator';
 
 import { doesItExist } from '../helpers';
 import {
+  cacheMiddleware,
   hasValidRole,
   isAdminOrSameUser,
   protectWithJWT,
   validateFields,
 } from '../middlewares';
+import { CACHE_TIME } from '../config';
 import { deleteUser, getUserByID, getUsers, updateUser } from '../controllers';
 
 const router: Router = Router();
 
-router.route('/').get(getUsers);
+router.route('/').get(cacheMiddleware(CACHE_TIME.ONE_HOUR), getUsers);
 
 router
   .route('/:id')
