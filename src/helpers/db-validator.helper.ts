@@ -56,3 +56,8 @@ export const doesItExist = async (
       return checkInCollection();
   }
 };
+
+// // Other f(x)
+// 5 * (3 - 1) = 10 <- Salta    <-- Inicia   1, 6, 11
+export const genSkips = (perPage: number, pageNum: number): number =>
+  perPage * (pageNum - 1);

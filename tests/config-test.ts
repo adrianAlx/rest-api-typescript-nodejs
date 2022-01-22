@@ -24,3 +24,22 @@ export const testUser2: TestUser = {
   password: '123123',
   role: 'USER_ROLE',
 };
+
+// Users
+export const updatedUser: TestUser = {
+  name: 'Alex 2 PRO PLUS',
+  password: '123123',
+  newPassword: '123123',
+  role: 'SUPER_ROLE',
+};
+
+export const testAdminUser: TestUser = {
+  name: 'Alex 333',
+  email: 'test333@test.com',
+  password: '123123',
+  role: 'ADMIN_ROLE',
+};
+
+export const testTeam = {
+  teamArr: ['raichu', 'pikachu', 'charizard', 'ditto', 'bulbasaur'],
+};
