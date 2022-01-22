@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { Category } from './../models';
+import { Category, Product } from './../models';
 import { CategoryModel } from '../models/category.model';
 
 interface CheckModel {
@@ -32,6 +32,13 @@ export const checkNewName = (collection: string) => {
         model = await Category.findById(id);
         isRegistered = await Category.findOne({
           name: newName.toUpperCase(),
+        });
+        return checkInCollection();
+
+      case 'product':
+        model = await Product.findById(id);
+        isRegistered = await Product.findOne({
+          name: newName.toLowerCase(),
         });
         return checkInCollection();
     }

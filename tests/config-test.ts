@@ -60,6 +60,16 @@ export const testCategory: TestCategory = {
   _id: '',
 };
 
-export const updatedCategory: TestUpdatedCategory = {
-  newName: 'New Category Name',
+// Product
+interface TestProduct {
+  name: string;
+  description: string;
+  category: string;
+  _id?: string;
+}
+
+export const testProduct: TestProduct = {
+  name: 'Product 99',
+  description: 'Some description',
+  category: '61eb05cc3b36c582ad83cf3f',
 };

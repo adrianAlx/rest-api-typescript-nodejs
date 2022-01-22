@@ -1,4 +1,4 @@
-import { Category, Role, User } from '../models';
+import { Category, Product, Role, User } from '../models';
 
 interface CheckModel {
   state: boolean;
@@ -35,6 +35,10 @@ export const alreadyRegistered = async (
     case 'category':
       model = await Category.findOne({ name: query.toUpperCase() });
       return checkInCollection();
+
+    case 'product':
+      model = await Product.findOne({ name: query.toLowerCase() });
+      return checkInCollection();
   }
 };
 
@@ -61,6 +65,10 @@ export const doesItExist = async (
 
     case 'category':
       model = await Category.findById(id);
+      return checkInCollection();
+
+    case 'product':
+      model = await Product.findById(id);
       return checkInCollection();
   }
 };

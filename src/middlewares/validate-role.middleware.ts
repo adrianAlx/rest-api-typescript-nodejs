@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { ObjectId } from 'mongoose';
 
-import { Category, User } from '../models';
+import { Category, Product, User } from '../models';
 import { CategoryModel } from '../models/category.model';
 
 interface UserRole {
@@ -25,7 +25,6 @@ export const isAdminOrSameUser = (collection: string) => {
     const { role: authRole, name, _id: authUid } = req.user as UserRole;
 
     const checkInCollection = () => {
-      console.log('\n>>>>>>> MODEL:\n', { model });
       const { _id: uid } = model.user as unknown as CategoryModel;
 
       if (uid.toString() === authUid.toString() || authRole === 'ADMIN_ROLE')
@@ -47,6 +46,10 @@ export const isAdminOrSameUser = (collection: string) => {
 
       case 'category':
         model = await Category.findById(documentID);
+        return checkInCollection();
+
+      case 'product':
+        model = await Product.findById(documentID);
         return checkInCollection();
     }
   };
