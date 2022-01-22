@@ -2,8 +2,12 @@ import { Router } from 'express';
 import { check } from 'express-validator';
 
 import { alreadyRegistered, isValidRole } from '../helpers';
-import { validateFields, checkLoginCredentials } from '../middlewares';
-import { signUp, signIn } from '../controllers';
+import {
+  validateFields,
+  checkLoginCredentials,
+  googleSignUp,
+} from '../middlewares';
+import { signUp, signIn, googleSignIn } from '../controllers';
 
 const router: Router = Router();
 
@@ -33,6 +37,16 @@ router.route('/login').post(
   ],
 
   signIn
+);
+
+router.route('/social/google').post(
+  [
+    check('id_token', 'id_token is required!').exists(),
+    validateFields,
+    googleSignUp,
+  ],
+
+  googleSignIn
 );
 
 export default router;

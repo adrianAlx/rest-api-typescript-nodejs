@@ -6,6 +6,8 @@ import compression from 'compression';
 import morgan from 'morgan';
 import path from 'path';
 
+import { initializePassport, passportInit } from '.';
+
 export const setupMiddlewares = (app: Application) => {
   app.use(cors());
   app.use(express.json());
@@ -14,5 +16,7 @@ export const setupMiddlewares = (app: Application) => {
   app.use(compression()).use(helmet());
   app.use(morgan('dev'));
 
-  // Other middlewares
+  // Passport
+  app.use(initializePassport());
+  passportInit();
 };

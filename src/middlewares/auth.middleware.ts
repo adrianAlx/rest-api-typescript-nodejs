@@ -1,10 +1,10 @@
+import { Handler, RequestHandler } from 'express';
 import passport from 'passport';
 import {
   Strategy as JwtStrategy,
   ExtractJwt,
   StrategyOptions,
 } from 'passport-jwt';
-import { Handler, RequestHandler } from 'express';
 
 import { SECRETORKEY } from '../config';
 import { User } from '../models';
