@@ -5,6 +5,7 @@ import express from 'express';
 
 import './db/db';
 import { setupMiddlewares, notFoundMiddleware } from './middlewares';
+import { authRoutes } from './routes';
 
 // Initializations:
 const app: Application = express();
@@ -13,9 +14,7 @@ const app: Application = express();
 setupMiddlewares(app);
 
 // Routes
-app.get('/', (req: Request, res: Response) => {
-  res.status(200).json({ msg: 'GET' });
-});
+app.use('/auth', authRoutes);
 
 app.use(notFoundMiddleware);
 
