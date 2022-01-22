@@ -14,11 +14,6 @@ interface TestCategory {
   name: string;
   _id: string;
 }
-interface TestUpdatedCategory {
-  name?: string;
-  _id?: string;
-  newName?: string;
-}
 
 // Auth
 export const testUser: TestUser = {

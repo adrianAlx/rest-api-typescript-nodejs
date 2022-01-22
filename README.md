@@ -1,4 +1,4 @@
-# TypeScript Express API Bootstrap (base / project starter)
+# TypeScript Express
 
 This is a repository intended to serve as a starting point if you want to bootstrap a express API project in TypeScript.
 
@@ -6,7 +6,7 @@ This is a repository intended to serve as a starting point if you want to bootst
 
 ```
 # install dependencies
-npm run basic-setup
+npm i
 
 # run in dev mode on port 3000
 npm run dev
@@ -27,6 +27,7 @@ npm run test
 ```
 
 ### Use watch
+
 ```
 npm run test-watch
 ```

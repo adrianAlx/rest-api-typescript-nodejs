@@ -1,11 +1,18 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, RequestHandler } from 'express';
+import { Types } from 'mongoose';
 
-import { Category, Product } from './../models';
+import { Category, Product, User } from './../models';
 import { CategoryModel } from '../models/category.model';
+
+const { ObjectId } = Types;
 
 interface CheckModel {
   state: boolean;
   name: string;
+}
+
+interface ModelCheckCollection {
+  state: boolean;
 }
 
 export const checkNewName = (collection: string) => {
@@ -43,4 +50,34 @@ export const checkNewName = (collection: string) => {
         return checkInCollection();
     }
   };
+};
+
+export const idExistSearch: RequestHandler<{
+  collection: string;
+  query: string;
+}> = async (req, res, next) => {
+  const { collection, query } = req.params;
+  const isValidMongoId: boolean = ObjectId.isValid(query);
+  if (!isValidMongoId) return next();
+
+  let model: ModelCheckCollection;
+
+  const checkInCollection = () =>
+    res.json({
+      results: model && model.state ? [model] : [],
+    });
+
+  switch (collection) {
+    case 'user':
+      model = await User.findById(query);
+      return checkInCollection();
+
+    case 'category':
+      model = await Category.findById(query);
+      return checkInCollection();
+
+    case 'product':
+      model = await Product.findById(query);
+      return checkInCollection();
+  }
 };
