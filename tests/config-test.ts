@@ -10,6 +10,16 @@ interface TestUser {
   _id?: string;
 }
 
+interface TestCategory {
+  name: string;
+  _id: string;
+}
+interface TestUpdatedCategory {
+  name?: string;
+  _id?: string;
+  newName?: string;
+}
+
 // Auth
 export const testUser: TestUser = {
   name: 'Alex 33',
@@ -42,4 +52,14 @@ export const testAdminUser: TestUser = {
 
 export const testTeam = {
   teamArr: ['raichu', 'pikachu', 'charizard', 'ditto', 'bulbasaur'],
+};
+
+// Category
+export const testCategory: TestCategory = {
+  name: 'Category 99',
+  _id: '',
+};
+
+export const updatedCategory: TestUpdatedCategory = {
+  newName: 'New Category Name',
 };

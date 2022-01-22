@@ -7,3 +7,4 @@ export * from './setup.middleware';
 export * from './validate-fields.middleware';
 export * from './google-signup.middleware';
 export * from './validate-role.middleware';
+export * from './check-in-collection.middleware';
