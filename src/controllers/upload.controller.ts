@@ -44,7 +44,7 @@ export const serveImg: RequestHandler<{
     const imgPath = path.join(__dirname, './../uploads', collection, model.img);
     if (fs.existsSync(imgPath)) return res.sendFile(imgPath);
 
-    return res.status(200).json({ ImgUrl: model.img || placeholder });
+    return res.status(200).json({ ImgUrl: model.img });
   }
 
   res.sendFile(placeholder);

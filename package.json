@@ -9,6 +9,7 @@
     "build": "tsc && ncp ./src/public ./dist/public",
     "test": "jest --verbose --detectOpenHandles ./tests/*.spec.ts",
     "test-watch": "npm run test -- --watch",
+
     "basic-setup": "npm i -D @types/bcryptjs @types/compression @types/cors @types/express @types/jest @types/jsonwebtoken @types/memory-cache @types/mongoose @types/morgan @types/passport @types/passport-jwt @types/supertest @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint jest nodemon supertest ts-jest tsc-watch typescript ncp ts-node-dev && npm i express cors dotenv express-validator bcryptjs mongoose jsonwebtoken helmet memory-cache morgan compression passport passport-jwt"
   },
   "keywords": [],

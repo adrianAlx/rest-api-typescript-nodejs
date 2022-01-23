@@ -9,7 +9,7 @@ import fileUpload from 'express-fileupload';
 
 import { initializePassport, passportInit } from '.';
 
-export const setupMiddlewares = (app: Application) => {
+export const setupMiddlewares = (app: Application): void => {
   app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));

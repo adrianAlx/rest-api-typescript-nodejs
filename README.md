@@ -1,6 +1,12 @@
 # TypeScript Express
 
-This is a repository intended to serve as a starting point if you want to bootstrap a express API project in TypeScript.
+REST API with the following technologies:
+
+- TypeScript
+- Node.js
+- Express
+- Mongoose
+- Jest
 
 ## Running the app
 
